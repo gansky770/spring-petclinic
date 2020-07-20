@@ -1,0 +1,26 @@
+# Default values for helm-spring-petclinic.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+
+image:
+  repository: gansky/spring-petclinic
+  tag: :latest
+deployment:
+  labels: spring-petclinic 
+  selector: spring-petclinic
+deploymentsql:
+  imagename: mysql:5.7 
+  labels: mysql
+  selector: mysql
+  MYSQL_ROOT_PASSWORD:
+  MYSQL_ALLOW_EMPTY_PASSWORD: true
+  MYSQL_USER: petclinic
+  MYSQL_PASSWORD: petclinic
+  MYSQL_DATABASE: petclinic
+service:
+  name: srv-spring-petclinic
+  type: ClusterIP
+  selector: spring-petclinic
+  port: 80
+  targetport: 8080 

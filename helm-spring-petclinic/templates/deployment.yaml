@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-petclinic
+  labels:
+    app: {{.Values.deployment.labels}}
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: {{.Values.deployment.selector}}
+  template:
+    metadata:
+      labels:
+        app: spring-petclinic
+    spec:
+      containers:
+      - name: spring-petclinic
+        image: {{.Values.image.repository}}{{.Values.image.tag}}
+        ports:
+        - containerPort: 8080
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{.Values.deploymentsql.selector}}
+  template:
+    metadata:
+      labels:
+        app: {{.Values.deploymentsql.labels}}
+    spec:
+      containers:
+      - name: mysql
+        image: {{.Values.deploymentsql.imagename}}
+        ports:
+        - name: mysql-port
+          containerPort: 3306
+        env:
+          - name: MYSQL_ROOT_PASSWORD
+            value: {{.Values.deploymentsql.MYSQL_ROOT_PASSWORD}} 
+          - name: MYSQL_ALLOW_EMPTY_PASSWORD
+            value: {{.Values.deploymentsql.MYSQL_ALLOW_EMPTY_PASSWORD}}
+          - name: MYSQL_USER
+            value: {{.Values.deploymentsql.MYSQL_USER}}   
+          - name: MYSQL_PASSWORD
+            value: {{.Values.deploymentsql.MYSQL_PASSWORD}}
+          - name: MYSQL_DATABASE
+            value: {{.Values.deploymentsql.MYSQL_DATABASE}}         
