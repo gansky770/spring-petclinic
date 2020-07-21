@@ -20,3 +20,4 @@ CMD ["java -jar code/*.jar"]
 
 #docker build  -t gansky/spring-petclinic:$(docker images --format='{{.ID}}' | head -1) -t gansky/spring-petclinic --network=spring-petclinic_sonarnet   .
 
+#docker build  -t gansky/spring-petclinic:B$(BUILD_NUMBER) -t gansky/spring-petclinic --network=spring-petclinic_sonarnet   .
