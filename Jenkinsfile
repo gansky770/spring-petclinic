@@ -7,7 +7,7 @@ node {
    }
    stage('docker compose up') {
      sh label: '', script: """
-      docker-compose up  --force-recreate --abort-on-container-exit"
+      docker-compose up "
      """
      }
    
@@ -19,7 +19,7 @@ node {
    }
    stage('docker compose down') {
      sh label: '', script: """
-      "docker-compose -f docker-compose.integration.yml down -v"
+      "docker-compose  down -v"
      """
      }
 
