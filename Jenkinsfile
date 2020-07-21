@@ -10,7 +10,7 @@ node {
       docker-compose up  --force-recreate --abort-on-container-exit"
      """
      }
-   }
+   
    stage('docker build/push') {
      docker.withRegistry('https://index.docker.io/v1/','dockerhub') {
        def app = docker.build("gansky/spring-petclinic:${commit_id}", '/.').push()
