@@ -7,7 +7,7 @@ node {
    }
    stage('docker compose up') {
      sh label: '', script: """
-      "docker-compose up "
+      "docker-compose up --force-recreate --abort-on-container-exit"
      """
      }
    
