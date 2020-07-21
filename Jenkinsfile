@@ -6,9 +6,11 @@ node {
      commit_id = readFile('.git/commit-id').trim()
    }
    stage('docker compose up') {
-     sh label: '', script: """
-      "docker-compose up --force-recreate --abort-on-container-exit -f docker-compose.yml"
-     """
+     sh "docker-composer build"
+     sh "docker-compose up -d"
+   //  sh label: '', script: """
+     // "docker-compose up --force-recreate --abort-on-container-exit -f docker-compose.yml"
+    // """
      }
    
    stage('docker build/push') {
