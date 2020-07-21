@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{.Values.deploymentsql.selector}}
+  template:
+    metadata:
+      labels:
+        app: {{.Values.deploymentsql.labels}}
+    spec:
+      containers:
+      - name: mysql
+        image: {{.Values.deploymentsql.imagename}}{{.Values.deploymentsql.imagetag}}
+        imagePullPolicy: IfNotPresent
+        ports:
+        - name: mysql-port
+          containerPort: 3306
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: {{.Values.deploymentsql.MYSQL_ROOT_PASSWORD |quote}} 
+        - name: MYSQL_ALLOW_EMPTY_PASSWORD
+          value: {{.Values.deploymentsql.MYSQL_ALLOW_EMPTY_PASSWORD |quote}}
+        - name: MYSQL_USER
+          value: {{.Values.deploymentsql.MYSQL_USER |quote}}   
+        - name: MYSQL_PASSWORD
+          value: {{.Values.deploymentsql.MYSQL_PASSWORD |quote }}
+        - name: MYSQL_DATABASE
+          value: {{.Values.deploymentsql.MYSQL_DATABASE |quote}}   

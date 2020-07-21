@@ -10,7 +10,8 @@ deployment:
   labels: spring-petclinic 
   selector: spring-petclinic
 deploymentsql:
-  imagename: mysql:5.7 
+  imagename: mysql
+  imagetag: :5.7
   labels: mysql
   selector: mysql
   MYSQL_ROOT_PASSWORD:
