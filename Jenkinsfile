@@ -8,9 +8,9 @@ node {
    stage('docker compose up') {
      sh "docker-composer build"
      sh "docker-compose up -d"
-     sh label: '', script: """
-      "docker-compose up --force-recreate --abort-on-container-exit -f docker-compose.yml"
-     """
+     //sh label: '', script: """
+     // "docker-compose up --force-recreate --abort-on-container-exit -f docker-compose.yml"
+     //"""
      }
    
    stage('docker build/push') {
@@ -19,11 +19,11 @@ node {
        def appp= docker.build("gansky/spring-petclinic:latest", '.').push()
      }
    }
-   stage('docker compose down') {
-     sh label: '', script: """
-      "docker-compose  down -v"
-     """
-     }
+   //stage('docker compose down') {
+    // sh label: '', script: """
+      //"docker-compose  down -v"
+     //"""
+    // }
 
       
    }
