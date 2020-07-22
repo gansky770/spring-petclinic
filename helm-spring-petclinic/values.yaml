@@ -21,7 +21,7 @@ deploymentsql:
   MYSQL_DATABASE: petclinic
 service:
   name: srv-spring-petclinic
-  type: ClusterIP
+  type: LoadBalancer
   selector: spring-petclinic
   port: 80
   targetport: 8080 
