@@ -11,7 +11,7 @@ node {
      //sh label: '', script: """
      // "docker-compose up --force-recreate --abort-on-container-exit -f docker-compose.yml"
      //"""
-     }
+     //}
    
    stage('docker build/push') {
      docker.withRegistry('https://index.docker.io/v1/','dockerhub') {
