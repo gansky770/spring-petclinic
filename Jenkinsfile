@@ -18,7 +18,7 @@ node {
        def app = docker.build("gansky/spring-petclinic:${commit_id}", '.').push()
        def appp= docker.build("gansky/spring-petclinic:latest", '.').push()
      }
-   }
+ //  }
    //stage('docker compose down') {
     // sh label: '', script: """
       //"docker-compose  down -v"
