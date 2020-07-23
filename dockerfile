@@ -5,7 +5,7 @@ FROM maven:3.5-jdk-8 as build
 WORKDIR /code
 ADD pom.xml /code/pom.xml
 ADD src /code/src
-RUN ["mvn", "package" , "-Dmaven.test.skip=true"  ]
+RUN ["mvn", "install" , "-Dmaven.test.skip=true"  ]
 
 
 FROM newtmitch/sonar-scanner as sonarqube
