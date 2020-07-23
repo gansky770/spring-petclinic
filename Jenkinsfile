@@ -8,28 +8,18 @@ node {
    
    stage('sonarqube server') {
       //checkout scm
-      sh "docker-compose up  -d   " 
+      sh "docker-compose up  -d " 
     }
-   //stage('docker compose up') {
-     //sh "docker-composer build"
-     //sh "docker-compose up -d"
-     //sh label: '', script: """
-     // "docker-compose up --force-recreate --abort-on-container-exit -f docker-compose.yml"
-     //"""
-     //}
+  
    
    stage('docker build/push') {
-     sh 'sleep 2m'
+    //sh 'sleep 2m'
      docker.withRegistry('https://index.docker.io/v1/','dockerhub') {
        def app = docker.build("gansky/spring-petclinic:${commit_id}", '--network petclinic-pipeline_sonarnet .').push()
        def appp= docker.build("gansky/spring-petclinic:latest", '--network petclinic-pipeline_sonarnet .').push()
      }
    }
-   //stage('docker compose down') {
-    // sh label: '', script: """
-      //"docker-compose  down -v"
-     //"""
-    // }
+   
 
       
    }
