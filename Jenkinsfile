@@ -8,7 +8,7 @@ node {
    
    stage('sonarqube server') {
       checkout scm
-      sh "docker-compose up -d " 
+      sh "docker-compose up  " 
     }
    //stage('docker compose up') {
      //sh "docker-composer build"
