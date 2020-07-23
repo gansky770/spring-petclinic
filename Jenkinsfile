@@ -8,7 +8,7 @@ node {
    
    stage('sonarqube server') {
       //checkout scm
-      sh "docker-compose up  -d  --force-recreate --abort-on-container-exit  " 
+      sh "docker-compose up  -d   " 
     }
    //stage('docker compose up') {
      //sh "docker-composer build"
@@ -19,6 +19,7 @@ node {
      //}
    
    stage('docker build/push') {
+     sh 'sleep 3m'
      docker.withRegistry('https://index.docker.io/v1/','dockerhub') {
        def app = docker.build("gansky/spring-petclinic:${commit_id}", '--network spring-petclinic_sonarnet .').push()
        def appp= docker.build("gansky/spring-petclinic:latest", '--network spring-petclinic_sonarnet .').push()
