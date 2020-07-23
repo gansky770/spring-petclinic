@@ -7,7 +7,7 @@ node {
    }
    
    stage('sonarqube server') {
-      sh ‘docker-compose –f docker-compose.yml ’
+      sh "docker-compose up –f docker-compose.yml" 
     }
    //stage('docker compose up') {
      //sh "docker-composer build"
