@@ -7,8 +7,8 @@ node {
    }
    
    stage('sonarqube server') {
-      checkout scm
-      sh "docker-compose up  " 
+      //checkout scm
+      sh "docker-compose up  --force-recreate --abort-on-container-exit  " 
     }
    //stage('docker compose up') {
      //sh "docker-composer build"
