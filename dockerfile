@@ -12,13 +12,14 @@ FROM newtmitch/sonar-scanner as sonarqube
 WORKDIR /usr/src
 COPY --from=build /code/target/*.jar /usr/src 
 RUN sonar-scanner  -Dsonar.projectBaseDir=/usr/src  -Dsonar.exclusions=**.java
-#RUN sonar-scanner  -Dsonar.projectBaseDir=/usr/src -Dsonar.java.source=1.8 -Dsonar.host.url="http://130.61.159.221:9000" -Dsonar.exclusions=**.java
+
 
 FROM openjdk:8-jre-alpine
 WORKDIR /code
 COPY --from=build /code/target/*.jar /code
 CMD ["java","-jar","spring-petclinic-2.3.1.BUILD-SNAPSHOT.jar"]
 
-#docker build  -t gansky/spring-petclinic:$(docker images --format='{{.ID}}' | head -1) -t gansky/spring-petclinic --network=spring-petclinic_sonarnet   .
+  
 
-#docker build  -t gansky/spring-petclinic:B$(BUILD_NUMBER) -t gansky/spring-petclinic --network=spring-petclinic_sonarnet   .
+ ## must install docker-compose on jenkins cont
+#     curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose && chmod +x /usr/local/bin/docker-compose
