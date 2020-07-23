@@ -1,8 +1,3 @@
-cache(maxCacheSize: 250, caches: [
-     [$class: 'ArbitraryFileCache', excludes: 'modules-2/modules-2.lock,*/plugin-resolution/**', includes: '**/*', path: '${HOME}/temp'],
-     [$class: 'ArbitraryFileCache', excludes: '', includes: '**/*', path: '${HOME}/temp']
-  ])
-
 node {
    def commit_id
    stage('step a') {
