@@ -20,8 +20,8 @@ node {
    
    stage('docker build/push') {
      docker.withRegistry('https://index.docker.io/v1/','dockerhub') {
-       def app = docker.build("gansky/spring-petclinic:${commit_id}", "--network=spring-petclinic_sonarnet",  '.').push()
-       def appp= docker.build("gansky/spring-petclinic:latest", "--network=spring-petclinic_sonarnet", '.').push()
+       def app = docker.build("gansky/spring-petclinic:${commit_id}", '--network spring-petclinic_sonarnet',  '.').push()
+       def appp= docker.build("gansky/spring-petclinic:latest", "--network spring-petclinic_sonarnet", '.').push()
      }
    }
    //stage('docker compose down') {
