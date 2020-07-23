@@ -11,7 +11,8 @@ RUN ["mvn", "package" , "-Dmaven.test.skip=true"  ]
 FROM newtmitch/sonar-scanner as sonarqube
 WORKDIR /usr/src
 COPY --from=build /code/target/*.jar /usr/src 
-RUN sonar-scanner  -Dsonar.projectBaseDir=/usr/src -Dsonar.java.source=1.8 -Dsonar.host.url="http://130.61.159.221:9000" -Dsonar.exclusions=**.java
+RUN sonar-scanner  -Dsonar.projectBaseDir=/usr/src  -Dsonar.exclusions=**.java
+#RUN sonar-scanner  -Dsonar.projectBaseDir=/usr/src -Dsonar.java.source=1.8 -Dsonar.host.url="http://130.61.159.221:9000" -Dsonar.exclusions=**.java
 
 FROM openjdk:8-jre-alpine
 WORKDIR /code
