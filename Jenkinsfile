@@ -1,3 +1,8 @@
+cache(maxCacheSize: 250, caches: [
+     [$class: 'ArbitraryFileCache', excludes: 'modules-2/modules-2.lock,*/plugin-resolution/**', includes: '**/*', path: '${HOME}/.gradle/caches'],
+     [$class: 'ArbitraryFileCache', excludes: '', includes: '**/*', path: '${HOME}/.gradle/wrapper']
+  ])
+
 node {
    def commit_id
    stage('step a') {
