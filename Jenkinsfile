@@ -5,6 +5,10 @@ node {
      sh "git rev-parse --short HEAD > .git/commit-id"                        
      commit_id = readFile('.git/commit-id').trim()
    }
+   
+   stage('sonarqube server') {
+      sh ‘docker-compose –f docker-compose.yml ’
+    }
    //stage('docker compose up') {
      //sh "docker-composer build"
      //sh "docker-compose up -d"
