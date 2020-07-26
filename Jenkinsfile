@@ -15,7 +15,7 @@ node {
    stage('docker build/push') {
     //sh 'sleep 2m'
      docker.withRegistry('https://index.docker.io/v1/','dockerhub') {
-       def app = docker.build("gansky/spring-petclinic:${BUILD_NUMBER}", '--network petclinic-pipeline_sonarnet .').push()
+       def app = docker.build("gansky/spring-petclinic:${commit-id}", '--network petclinic-pipeline_sonarnet .').push()
        def appp= docker.build("gansky/spring-petclinic:latest", '--network petclinic-pipeline_sonarnet .').push()
      }
    }
